@@ -1,0 +1,27 @@
+{
+  "name": "node-school-alarm-app",
+  "version": "1.0.0",
+  "description": "Alarm and Bell System for St Ambrose Primary School",
+  "main": "main.js",
+  "dependencies": {
+    "cron": "^1.2.1",
+    "johnny-five": "^0.10.6",
+    "node-aplay": "^1.0.3",
+    "raspi-io": "^7.2.4",
+    "serialport": "^4.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/micant/node-school-alarm-app.git"
+  },
+  "author": "Michael Antoniades",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micant/node-school-alarm-app/issues"
+  },
+  "homepage": "https://github.com/micant/node-school-alarm-app#readme"
+}
