@@ -6,7 +6,7 @@ const Raspi = require('raspi-io');
 const five = require('johnny-five');
 const Sound = require('node-aplay');
 const board = new five.Board({
-  io: new Raspi()
+	io: new Raspi()
 });
 
 
@@ -16,56 +16,55 @@ console.log('application started');
 
 //Button Interface
 board.on('ready', () => { 
+	const button1 = new five.Button({pin: "P1-11", isPullup: false});
+	const button2 = new five.Button({pin: "P1-13", isPullup: false});
 
-    const button1 = new five.Button({pin: "P1-11", isPullup: false});
-    const button2 = new five.Button({pin: "P1-13", isPullup: false});
-
-    const track1 = new Sound('/home/pi/Audio/AlertSound.wav');
+	const track1 = new Sound('/home/pi/Audio/AlertSound.wav');
 	track1.on('complete', function() {
 		console.log("Track 1 complete");
 		track1isPlaying = false
 	}); 
 
-    const track2 = new Sound('/home/pi/Audio/EvacuateSound.wav');
+    	const track2 = new Sound('/home/pi/Audio/EvacuateSound.wav');
 	track2.on('complete', function() {
 		console.log("Track 2 complete");
 		track2isPlaying = false;
 	}); 
 	
-    let track1isPlaying = false;
-    let track2isPlaying = false;
+    	let track1isPlaying = false;
+    	let track2isPlaying = false;
 
-    button1.on("hold", function() {
-        if(!track1isPlaying) {
+    	button1.on("hold", function() {
+        	if(!track1isPlaying) {
 			console.log( "Track 1 play" );
-	    	track1.play();
-	    	track1isPlaying = true;
-	    };
-    });
+	    		track1.play();
+	    		track1isPlaying = true;
+	    	};
+    	});
     
-    button1.on("up", function() {
+    	button1.on("up", function() {
 		if(track1isPlaying){
 			console.log("Track 1 off");
 			track1.stop();
-            track1isPlaying = false;	
-		}
-    });
+        		track1isPlaying = false;	
+		};
+    	});
 
-    button2.on("hold", function() {
-        if(!track2isPlaying) {
+    	button2.on("hold", function() {
+        	if(!track2isPlaying) {
 			console.log( "Track 2 play" );
 			track2.play();
 			track2isPlaying = true;
 		};
-     });
+     	});
 
-    button2.on("up", function() {
+    	button2.on("up", function() {
 		if(track2isPlaying){
-	        console.log("Track 2 off");
-		    track2.stop();
-            track2isPlaying = false;	
-		}
-    });
+	       		console.log("Track 2 off");
+		    	track2.stop();
+            		track2isPlaying = false;	
+		};
+   	});
 });
 
 
