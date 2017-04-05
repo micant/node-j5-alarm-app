@@ -21,7 +21,16 @@ board.on('ready', () => {
     const button2 = new five.Button({pin: "P1-13", isPullup: false});
 
     const track1 = new Sound('/home/pi/Audio/AlertSound.wav');
-    const track2 = new Sound('/home/pi/Audio/EvacuateSound.wav')
+	track1.on('complete', function() {
+		console.log("Track 1 complete");
+		track1isPlaying = false
+	}); 
+
+    const track2 = new Sound('/home/pi/Audio/EvacuateSound.wav');
+	track2.on('complete', function() {
+		console.log("Track 2 complete");
+		track2isPlaying = false;
+	}); 
 	
     let track1isPlaying = false;
     let track2isPlaying = false;
@@ -31,16 +40,13 @@ board.on('ready', () => {
 			console.log( "Track 1 play" );
 	    	track1.play();
 	    	track1isPlaying = true;
-	    	track1.on('complete', function() {
-	    	track1isPlaying = false; 
-	    });
-	}
+	    };
     });
     
     button1.on("up", function() {
 		if(track1isPlaying){
 			console.log("Track 1 off");
-			track1.pause();
+			track1.stop();
             track1isPlaying = false;	
 		}
     });
@@ -50,20 +56,16 @@ board.on('ready', () => {
 			console.log( "Track 2 play" );
 			track2.play();
 			track2isPlaying = true;
-			track2.on('complete', function() {
-	    	track2isPlaying = false; 
-	    });
-	}
+		};
      });
 
     button2.on("up", function() {
 		if(track2isPlaying){
 	        console.log("Track 2 off");
-		    track2.pause();
+		    track2.stop();
             track2isPlaying = false;	
 		}
     });
-
 });
 
 
