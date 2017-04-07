@@ -9,7 +9,13 @@ const board = new five.Board({
 	io: new Raspi()
 });
 
-
+function test () {
+	PlayOnce.play();
+	console.log('test initiated');
+	PlayOnce.on('complete', function () {
+		console.log('test passed');
+	}
+}
 
 
 console.log('application started');
@@ -18,7 +24,7 @@ console.log('application started');
 board.on('ready', () => { 
 	const button1 = new five.Button({pin: "P1-11", isPullup: false});
 	const button2 = new five.Button({pin: "P1-13", isPullup: false});
-
+	
 	const track1 = new Sound('/home/pi/Audio/AlertSound.wav');
 	track1.on('complete', function() {
 		console.log("Track 1 complete");
@@ -67,7 +73,7 @@ board.on('ready', () => {
    	});
 });
 
-
+test();
 
 //Cron Jobs
 
