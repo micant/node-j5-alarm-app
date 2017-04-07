@@ -14,7 +14,7 @@ function test () {
 	console.log('test initiated');
 	PlayOnce.on('complete', function () {
 		console.log('test passed');
-	}
+	});
 }
 
 
