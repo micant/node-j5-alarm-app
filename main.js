@@ -73,8 +73,6 @@ board.on('ready', () => {
    	});
 });
 
-test();
-
 //Cron Jobs
 
 var corridorsOpen = new CronJob('00 30 08 * * 1-5', function() {
@@ -103,7 +101,7 @@ var startClass = new CronJob('00 00 09 * * 1-5',function() {
 
 var recessEatingBell = new CronJob('00 00 11 * * 1-5', function() {
 	console.log('playing recess eating bell');
-	PlayOnce.Play();
+	PlayOnce.play();
 }, null, true, 'Australia/Melbourne').start();
 
 
