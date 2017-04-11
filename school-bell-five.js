@@ -8,7 +8,7 @@ var counter = 0;
 
 module.exports = function play() {
     if(!isPlaying) {
-        if(counter < 4) {
+        if(counter <= 5) {
             track.play();
             isPlaying = true;
             counter ++;
