@@ -18,6 +18,12 @@ function test () {
 }
 
 
+function test1 () {
+	PlayFive();
+	console.log('test five initiated');
+}
+
+
 console.log('application started');
 
 //Button Interface
@@ -37,8 +43,8 @@ board.on('ready', () => {
 		track2isPlaying = false;
 	}); 
 	
-    	let track1isPlaying = false;
-    	let track2isPlaying = false;
+    	var track1isPlaying = false;
+    	var track2isPlaying = false;
 
     	button1.on("hold", function() {
         	if(!track1isPlaying) {
@@ -163,9 +169,6 @@ var busDutyEnds = new CronJob('00 45 15 * * 1-5', function() {
 	console.log('playing bus duty ends');
 	PlayOnce.play();
 }, null, true, 'Australia/Melbourne').start();
-
-
-
 
 
 

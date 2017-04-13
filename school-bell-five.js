@@ -5,21 +5,26 @@ var track = new Sound('/home/pi/Audio/Chime.wav');
 var isPlaying = false;
 var counter = 0;
 
+track.on('complete', function() {
+    isPlaying = false;
+    counter++;
+    playFive();
+});
 
-module.exports = function play() {
+function playFive() {
     if(!isPlaying) {
-        if(counter <= 5) {
+        if(counter < 5) {
             track.play();
             isPlaying = true;
-            counter ++;
-            track.on('complete', function() {
-                isPlaying = false; 
-                play();
-            });
-        }
+        } else {
+	    counter = 0;
+	}
     }
 }
 
+module.exports = function () {
+    playFive();
+}
 
 
 
